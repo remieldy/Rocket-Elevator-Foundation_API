@@ -27,7 +27,7 @@ namespace RocketElevatorApi {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<RocketElevatorContext>(options =>
-        options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+        options.UseMySql(Configuration.GetConnectionString("CodeboxxConnection")));
             //services.Add(new ServiceDescriptor(typeof(RocketElevatorContext), new RocketElevatorContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
