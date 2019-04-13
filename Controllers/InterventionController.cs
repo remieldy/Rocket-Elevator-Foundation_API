@@ -73,6 +73,7 @@ namespace RocketElevatorApi.Controllers {
                 if(item.status == "InProgress") 
                 {
                     dbInter.intervention_start = DateTime.Now;
+                    dbInter.intervention_finish = null;
                     await _context.SaveChangesAsync();
                     return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + dbInter.intervention_start);
                 }
