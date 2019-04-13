@@ -62,7 +62,7 @@ namespace RocketElevatorApi.Controllers {
             
             if (item.status == "Intervention" || item.status == "InProgress" || item.status == "Completed")
             {
-                if(item.intervention_start != null) 
+                if(item.intervention_start == null) 
                 {
                     item.intervention_start = DateTime.Now;
                      _context.Entry(item).State = EntityState.Modified;
