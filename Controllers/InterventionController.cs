@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using MySql.Data;
 using MySql.Data.MySqlClient;
+
 using RocketElevatorApi.Models;
 
 namespace RocketElevatorApi.Controllers {
@@ -26,64 +29,54 @@ namespace RocketElevatorApi.Controllers {
             // }
         }
 
-        // GET: api/building
         [HttpGet]
-        public IEnumerable<Intervention> GetIntervention() {
+        public IEnumerable<Intervention> GetAllInterventions() {
+            return _context.Interventions;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Intervention>> GetTodoItems(long id) {
+            var todoItem = await _context.Interventions.FindAsync(id);
+
+            if (todoItem == null) {
+                return NotFound();
+            }
+
+            return todoItem;
+        }
+
+        // GET: api/building
+        [HttpGet("pending")]
+        public IEnumerable<Intervention> GetInterventionNotStarted() {
             IQueryable<Intervention> Intervention =
-           from i in _context.Interventions
-           where i.intervention_start == null && i.status == "pending"
-           select i;
+            from i in _context.Interventions
+            where i.intervention_start == null && i.status == "pending"
+            select i;
             return Intervention.ToList();
         }
 
-        // GET: api/building/5
-        [HttpGet("intervention")]
-        public IEnumerable<Building> GetBuildingsIntervention() {
-            //Starting a query in lambda 
-            //This query look for each Battery, Columns and Elevators that have a status set to Intervention 
-            //and return the corresponding Building informations.
-            IQueryable<Building> Building =
-                from bu in _context.Buildings
-                join ba in _context.Batteries on bu.id equals ba.building_id
-                join co in _context.Columns on ba.id equals co.battery_id
-                join el in _context.Elevators on co.id equals el.column_id
-            where ba.status == "Intervention" || co.status == "Intervention" || el.status == "Intervention"
-            select bu;
-
-            //Return the IQueryable Building lambda as a list. 
-            return Building.ToList();
-        }
-// PUT: api/Todo/5
+        // PUT: api/intervention/id
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTodoItem(long id, Intervention item) {
             if (id != item.id) {
                 return BadRequest();
             }
             
-            if (item.status == "Intervention" || item.status == "InProgress" || item.status == "Completed")
+            if (item.status == "InProgress" || item.status == "Completed")
             {
-
-
-                var dbInter = _context.Interventions.Find(item.id);
-                if (dbInter == null)
-                    return NotFound();
-
-                dbInter.status = item.status;
-
-                if(item.status == "InProgress") 
-                {
-                    dbInter.intervention_start = DateTime.Now;
-                    dbInter.intervention_finish = null;
-                    await _context.SaveChangesAsync();
-                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + dbInter.intervention_start);
-                }
-                else if(item.status == "Completed")
-                {
-                    dbInter.intervention_finish = DateTime.Now;
-                    await _context.SaveChangesAsync();
-                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + dbInter.intervention_finish);
+                if (item.status == "InProgress"){
                     
+                    item.intervention_finish = null;
+                    item.intervention_start = DateTime.Now;
+                Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + item.intervention_start);
                 }
+                if (item.status == "Completed"){
+
+                    item.intervention_finish = DateTime.Now;
+                    Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + item.intervention_finish);
+                }
+                _context.Entry(item).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
             }
 
             return Content("You need to insert a valid status : Pending, InProgress, Completed, Thank you !  ");
