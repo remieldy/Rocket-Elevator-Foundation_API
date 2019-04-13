@@ -62,19 +62,28 @@ namespace RocketElevatorApi.Controllers {
             
             if (item.status == "Intervention" || item.status == "InProgress" || item.status == "Completed")
             {
+
+
+
+                var dbInter = _context.Interventions.Find(item.id);
+                if (dbInter == null)
+                return NotFound();
+
+                dbInter.status = item.status;
+
                 if(item.intervention_start == null) 
                 {
-                    item.intervention_start = DateTime.Now;
+                    dbInter.intervention_start = DateTime.Now;
                      _context.Entry(item).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
-                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + item.intervention_start);
+                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + dbInter.intervention_start);
                 }
                 else
                 {
-                    item.intervention_finish = DateTime.Now;
+                    dbInter.intervention_finish = DateTime.Now;
                      _context.Entry(item).State = EntityState.Modified;
                      await _context.SaveChangesAsync();
-                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + item.intervention_finish);
+                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + dbInter.intervention_finish);
                     
                 }
             }
