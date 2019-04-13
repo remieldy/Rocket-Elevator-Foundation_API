@@ -61,10 +61,22 @@ namespace RocketElevatorApi.Controllers {
             }
             
             if (item.status == "Intervention" || item.status == "InProgress" || item.status == "Completed")
-            { item.intervention_start = DateTime.Now;
-                _context.Entry(item).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-               return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + item.intervention_start);
+            {
+                if(item.intervention_start != null) 
+                {
+                    item.intervention_start = DateTime.Now;
+                     _context.Entry(item).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + item.intervention_start);
+                }
+                else
+                {
+                    item.intervention_finish = DateTime.Now;
+                     _context.Entry(item).State = EntityState.Modified;
+                     await _context.SaveChangesAsync();
+                    return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + item.intervention_finish);
+                    
+                }
             }
 
             return Content("You need to insert a valid status : Pending, InProgress, Completed, Thank you !  ");
