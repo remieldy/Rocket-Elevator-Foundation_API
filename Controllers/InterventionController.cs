@@ -71,7 +71,7 @@ namespace RocketElevatorApi.Controllers {
 
                 dbInter.status = item.status;
 
-                if(item.intervention_start == null) 
+                if(dbInter.intervention_start == null) 
                 {
                     dbInter.intervention_start = DateTime.Now;
                      _context.Entry(item).State = EntityState.Modified;
