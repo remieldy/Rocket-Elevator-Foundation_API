@@ -56,31 +56,32 @@ namespace RocketElevatorApi.Controllers {
         }
 
         // PUT: api/intervention/id
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(long id, Intervention item) {
-            if (id != item.id) {
-                return BadRequest();
-            }
-            
-            if (item.status == "InProgress" || item.status == "Completed")
-            {
-                if (item.status == "InProgress"){
-                    
-                    item.intervention_finish = null;
-                    item.intervention_start = DateTime.Now;
-                Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + item.intervention_start);
-                }
-                if (item.status == "Completed"){
+       [HttpPut("{id}")]
+       public async Task<IActionResult> PutTodoItem(long id, Intervention item) {
+           if (id != item.id) {
+               return BadRequest();
+           }
 
-                    item.intervention_finish = DateTime.Now;
-                    Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + item.intervention_finish);
-                }
-                _context.Entry(item).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
+           if (item.status == "InProgress" || item.status == "Completed")
+           {
+               if (item.status == "InProgress"){
 
-            return Content("You need to insert a valid status : Pending, InProgress, Completed, Thank you !  ");
+                   item.intervention_finish = null;
+                   item.intervention_start = DateTime.Now;
+                   _context.Entry(item).State = EntityState.Modified;
+                   await _context.SaveChangesAsync();
+                   return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_start as been changed to: " + item.intervention_start);
+               }
+               if (item.status == "Completed"){
 
-        }
-    }
+                   item.intervention_finish = DateTime.Now;
+                   _context.Entry(item).State = EntityState.Modified;
+                   await _context.SaveChangesAsync();
+                   return Content("Intervention: " + item.id + ", status as been changed to: " + item.status + ", and intervention_finish as been changed to: " + item.intervention_finish);
+               }
+           }
+
+           return Content("You need to insert a valid status : Pending, InProgress, Completed, Thank you !  ");
+
+       }
 }
