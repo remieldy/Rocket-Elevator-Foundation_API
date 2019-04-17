@@ -27,7 +27,6 @@ namespace RocketElevatorApi.Controllers {
         }
  [HttpGet("{email}")]
 
-
         // GET: api/building
         [HttpGet]
         public IEnumerable<User> GetUsers() {
