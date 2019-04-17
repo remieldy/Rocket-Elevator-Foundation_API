@@ -8,6 +8,8 @@ namespace RocketElevatorApi.Models {
         public DbSet<Column> Columns { get; set; }
         public DbSet<Lead> Leads { get; set; }
         public DbSet<Intervention> Interventions { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
     }
 }
