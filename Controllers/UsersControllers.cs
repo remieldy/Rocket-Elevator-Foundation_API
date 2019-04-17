@@ -26,7 +26,6 @@ namespace RocketElevatorApi.Controllers {
             // }
         }
 
-
         // GET: api/building
         [HttpGet]
         public IEnumerable<User> GetUsers() {
