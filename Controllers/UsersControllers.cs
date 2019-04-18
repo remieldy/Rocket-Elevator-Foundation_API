@@ -29,15 +29,12 @@ namespace RocketElevatorApi.Controllers {
 
         // GET: api/building
         [HttpGet]
-        public IEnumerable<User> GetUsers() {
-            return _context.Users;
-        }
      public Boolean FindUsersByEmail(string email) {
             // IQueryable<User> item = await _context.Users.Where(x=> (x.email == current_email)).ToList();
             IQueryable<User> AskedUsers =
-                from user in _context.Users
-            where user.email == email
-            select user;
+                from u in _context.Users
+            where u.email == email
+            select u;
 
             var answer = false;
 
