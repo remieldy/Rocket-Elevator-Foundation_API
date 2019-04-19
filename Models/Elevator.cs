@@ -12,8 +12,7 @@ namespace RocketElevatorApi.Models {
     public class Elevator {
         [Key]
         public long id { get; set; }
-        [ForeignKey("column_id")]
-        public long column_id { get; set; }
+
         public string status { get; set; }
     }
 }

@@ -36,22 +36,22 @@ namespace RocketElevatorApi.Controllers {
         }
 
         // GET: api/building/5
-        [HttpGet("intervention")]
-        public IEnumerable<Building> GetBuildingsIntervention() {
-            //Starting a query in lambda 
-            //This query look for each Battery, Columns and Elevators that have a status set to Intervention 
-            //and return the corresponding Building informations.
-            IQueryable<Building> Building =
-                from bu in _context.Buildings
-                join ba in _context.Batteries on bu.id equals ba.building_id
-                join co in _context.Columns on ba.id equals co.battery_id
-                join el in _context.Elevators on co.id equals el.column_id
-            where ba.status == "Intervention" || co.status == "Intervention" || el.status == "Intervention"
-            select bu;
+        // [HttpGet("intervention")]
+        // public IEnumerable<Building> GetBuildingsIntervention() {
+        //     //Starting a query in lambda 
+        //     //This query look for each Battery, Columns and Elevators that have a status set to Intervention 
+        //     //and return the corresponding Building informations.
+        //     IQueryable<Building> Building =
+        //         from bu in _context.Buildings
+        //         join ba in _context.Batteries on bu.id equals ba.building_id
+        //         join co in _context.Columns on ba.id equals co.battery_id
+        //         join el in _context.Elevators on co.id equals el.column_id
+        //     where ba.status == "Intervention" || co.status == "Intervention" || el.status == "Intervention"
+        //     select bu;
 
-            //Return the IQueryable Building lambda as a list. 
-            return Building.ToList();
-        }
+       
+        //     return Building.ToList();
+        // }
 
         // // POST: api/Todo
         // [HttpPost]

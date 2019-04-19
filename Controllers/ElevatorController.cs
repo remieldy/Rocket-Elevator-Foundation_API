@@ -23,10 +23,14 @@ namespace RocketElevatorApi.Controllers {
             // }
         }
 
-        // GET: api/Elevator
-        [HttpGet]
+           [HttpGet]
         public IEnumerable<Elevator> GetElevators() {
-            return _context.Elevators;
+            IQueryable<Elevator> OfflineElevator =
+                from ele in _context.Elevators
+            where ele.status == "Offline"
+            select ele;
+
+            return OfflineElevator.ToList();
         }
 
     
