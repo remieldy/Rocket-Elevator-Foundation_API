@@ -25,12 +25,13 @@ namespace RocketElevatorApi.Controllers {
             //     _context.SaveChanges();
             // }
         }
+
+
  [HttpGet("{email}")]
 
-        // GET: api/building
+        // GET: api/users 
         [HttpGet]
      public Boolean FindUsersByEmail(string email) {
-            // IQueryable<User> item = await _context.Users.Where(x=> (x.email == current_email)).ToList();
             IQueryable<User> AskedUsers =
                 from u in _context.Users
             where u.email == email
