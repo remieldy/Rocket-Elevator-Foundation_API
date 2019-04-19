@@ -49,16 +49,13 @@ namespace RocketElevatorApi.Controllers {
 
             return todoItem;
         }
-         [HttpPut("{id}/{Status}")]
-        public async Task<IActionResult> PutTodo(long id, string Status) {
-
-            
-            Elevator item = await _context.Elevators.FindAsync(id);
+         [HttpPut("{id}/Moving")]
+        public async Task<IActionResult> PutTodo(long id, Elevator item) {
             if (id != item.id) {
                 return BadRequest();
             }
 
-            item.status = Status;
+            item.status = "Moving";
             _context.Entry(item).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
