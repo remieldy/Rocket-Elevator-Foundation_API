@@ -50,7 +50,10 @@ namespace RocketElevatorApi.Controllers {
             return todoItem;
         }
          [HttpPut("{id}/Moving")]
-        public async Task<IActionResult> PutTodo(long id, Elevator item) {
+        public async Task<IActionResult> PutTodo(long id) {
+
+            
+            Elevator item = await _context.Elevators.FindAsync(id);
             if (id != item.id) {
                 return BadRequest();
             }
@@ -84,7 +87,7 @@ namespace RocketElevatorApi.Controllers {
                 return Content("Elevator: " + item.id + ", status as been change to: " + item.status);
             }
 
-            return Content("You need to insert a valid status : Intervention, Offline, Moving, Thank you !  ");
+            return Content("You need to insert a valid status : Idle, Offline, Moving, Thank you !  ");
 
         }
 
