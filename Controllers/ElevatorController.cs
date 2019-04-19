@@ -77,14 +77,14 @@ namespace RocketElevatorApi.Controllers {
                 return BadRequest();
             }
             
-            if (item.status == "Intervention" || item.status == "Active" || item.status == "Inactive")
+            if (item.status == "Intervention" || item.status == "Moving" || item.status == "Offline")
             {
                 _context.Entry(item).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return Content("Elevator: " + item.id + ", status as been change to: " + item.status);
             }
 
-            return Content("You need to insert a valid status : Intervention, Inactive, Active, Thank you !  ");
+            return Content("You need to insert a valid status : Intervention, Offline, Moving, Thank you !  ");
 
         }
 
