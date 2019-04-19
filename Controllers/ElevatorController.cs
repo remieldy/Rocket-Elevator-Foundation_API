@@ -46,7 +46,7 @@ namespace RocketElevatorApi.Controllers {
             return todoItem;
         }
          [HttpPut("{id}/Moving")]
-        public async Task<IActionResult> PutTodoItem(long id, Elevator item) {
+        public async Task<IActionResult> PutTodo(long id, Elevator item) {
             if (id != item.id) {
                 return BadRequest();
             }
