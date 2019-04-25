@@ -22,15 +22,9 @@ namespace RocketElevatorApi.Controllers {
             _context = context;
         }
 
-        // GET: api/lead
-        [HttpGet("recent")]
+        [HttpGet]
         public IEnumerable<Lead> GetLeads() {
-            IQueryable<Lead> Leads =
-            from le in _context.Leads
-            where le.customer_id == null && le.created_at >= DateTime.Now.AddDays(-30)
-            select le;
-
-            return Leads.ToList();
+            return _context.Leads;
         }
     }
 }
