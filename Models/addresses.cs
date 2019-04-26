@@ -9,7 +9,7 @@ using System.Web;
 namespace RocketElevatorApi.Models {
 
     [Table("addresses")]
-    public class Addresses {
+    public class Address {
         [Key]
         public long id { get; set; }
         public string city {get;set;}

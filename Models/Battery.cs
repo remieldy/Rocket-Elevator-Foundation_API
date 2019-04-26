@@ -14,7 +14,7 @@ namespace RocketElevatorApi.Models {
         public long id { get; set; }
         public long building_id { get; set; }
         [ForeignKey("building_id")]
-        public string battery_type { get; set; }
+        public string building_type { get; set; }
         public string status { get; set; }
     }
 }

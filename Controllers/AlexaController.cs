@@ -19,61 +19,57 @@ namespace RocketElevatorApi.Controllers
             _context = context;
         } 
 
-        [HttpGet("elevators")]
+        [HttpGet("Elevators")]
         public IEnumerable<Elevator> GetElevators() {
             return _context.Elevators;
         }
             [HttpGet("ElevatorsStatus")]
         public IEnumerable<Elevator> GetElevatorsStatus() {
-            IQueryable<Elevators> ElevatorStatus =
+            IQueryable<Elevator> ElevatorStatus =
             from ele in _context.Elevators
             where ele.status == "Moving"
             select ele;
             return ElevatorStatus.ToList();
         }
 
-            [HttpGet("Addresses/cities")]
-        public IEnumerable<Addresses> GetAddresses() {
-            IQueryable<Address> Address =
+            [HttpGet("Address/cities")]
+        public IEnumerable<Address> GetAddresses() {
+            IQueryable<Address> AddressesList =
                 from ba in _context.Batteries
                 join bu in _context.Buildings on ba.building_id equals bu.id
                 join ad in _context.Addresses on bu.address_id equals ad.id
-            where ba.status == "Active"
+            where ba.status == "Online"
             select ad;
-            return Address.ToList().Dinstinct();
+            return AddressesList.Distinct().ToList();
         }
-                    [HttpGet("buildings")]
-        public IEnumerable<Buildings> GetBuildings()
+                    [HttpGet("Buildings")]
+        public IEnumerable<Building> GetBuildings()
         {
             return _context.Buildings;
         }
 
                    [HttpGet("Batteries")]
-        public IEnumerable<Batteries> GetBatteries()
+        public IEnumerable<Battery> GetBatteries()
         {
             return _context.Batteries;
         }
         
                    [HttpGet("Leads")]
-        public IEnumerable<Leads> GetLeads()
+        public IEnumerable<Lead> GetLeads()
         {
             return _context.Leads;
         }
           
                    [HttpGet("Quotes")]
-        public IEnumerable<Quotes> GetQuote()
+        public IEnumerable<Quote> GetQuotes()
         {
             return _context.Quotes;
         }
                     [HttpGet("customers")]
-        public IEnumerable<customers> GetCustomers()
+        public IEnumerable<Customer> GetCustomers()
         {
-            return _context.customers;
+            return _context.Customers;
         }
-
-
-
-       
 
      
 
