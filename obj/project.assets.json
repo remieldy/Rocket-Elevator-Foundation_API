@@ -12348,11 +12348,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\week9Api\\Elevator-API\\RocketElevatorApi.csproj",
+      "projectUniqueName": "C:\\Rest_API\\Rocket-Elevator-Foundation_API\\RocketElevatorApi.csproj",
       "projectName": "RocketElevatorApi",
-      "projectPath": "C:\\week9Api\\Elevator-API\\RocketElevatorApi.csproj",
+      "projectPath": "C:\\Rest_API\\Rocket-Elevator-Foundation_API\\RocketElevatorApi.csproj",
       "packagesPath": "C:\\Users\\Remie\\.nuget\\packages\\",
-      "outputPath": "C:\\week9Api\\Elevator-API\\obj\\",
+      "outputPath": "C:\\Rest_API\\Rocket-Elevator-Foundation_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

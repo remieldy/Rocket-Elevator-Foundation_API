@@ -10,19 +10,19 @@ namespace RocketElevatorApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdressesController : ControllerBase
+    public class AddressesController : ControllerBase
     {
         private readonly RocketElevatorContext _context;
 
-        public AdressesController(RocketElevatorContext context)
+        public AddressesController(RocketElevatorContext context)
         {
             _context = context;
         } 
 
             [HttpGet]
-        public IEnumerable<Adresses> GetAdresses()
+        public IEnumerable<Addresses> GetAddresses()
         {
-            return _context.Adresses.city;
+            return _context.Addresses;
         }
 
 }  } 

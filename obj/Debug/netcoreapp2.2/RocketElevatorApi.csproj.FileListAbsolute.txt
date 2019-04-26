@@ -40,3 +40,17 @@ c:\week9Api\Elevator-API\obj\Debug\netcoreapp2.2\RocketElevatorApi.AssemblyInfo.
 c:\week9Api\Elevator-API\obj\Debug\netcoreapp2.2\RocketElevatorApi.RazorTargetAssemblyInfo.cache
 c:\week9Api\Elevator-API\obj\Debug\netcoreapp2.2\RocketElevatorApi.dll
 c:\week9Api\Elevator-API\obj\Debug\netcoreapp2.2\RocketElevatorApi.pdb
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.csprojAssemblyReference.cache
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.csproj.CoreCompileInputs.cache
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.RazorAssemblyInfo.cache
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.RazorAssemblyInfo.cs
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.AssemblyInfoInputs.cache
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.AssemblyInfo.cs
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.dll
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.pdb
+C:\Rest_API\Rocket-Elevator-Foundation_API\bin\Debug\netcoreapp2.2\RocketElevatorApi.deps.json
+C:\Rest_API\Rocket-Elevator-Foundation_API\bin\Debug\netcoreapp2.2\RocketElevatorApi.runtimeconfig.json
+C:\Rest_API\Rocket-Elevator-Foundation_API\bin\Debug\netcoreapp2.2\RocketElevatorApi.runtimeconfig.dev.json
+c:\Rest_API\Rocket-Elevator-Foundation_API\bin\Debug\netcoreapp2.2\RocketElevatorApi.dll
+c:\Rest_API\Rocket-Elevator-Foundation_API\bin\Debug\netcoreapp2.2\RocketElevatorApi.pdb
+c:\Rest_API\Rocket-Elevator-Foundation_API\obj\Debug\netcoreapp2.2\RocketElevatorApi.RazorTargetAssemblyInfo.cache
