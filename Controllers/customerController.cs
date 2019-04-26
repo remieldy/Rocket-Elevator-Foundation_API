@@ -19,7 +19,6 @@ namespace RocketElevatorApi.Controllers
             _context = context;
 
         }
-
         // GET: api/Todo
         [HttpGet]
         public IEnumerable<Customer> GetCustomer()

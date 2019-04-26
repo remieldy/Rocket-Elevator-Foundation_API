@@ -22,7 +22,7 @@ namespace RocketElevatorApi.Controllers
             [HttpGet]
         public IEnumerable<Adresses> GetAdresses()
         {
-            return _context.Adresses;
+            return _context.Adresses.city;
         }
 
 }  } 
