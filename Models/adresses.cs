@@ -20,5 +20,6 @@ namespace RocketElevatorApi.Models {
         public string postal_code {get;set;}
         public string country {get;set;}
         public string notes {get;set;}
+        
     }
 }
