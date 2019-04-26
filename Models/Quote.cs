@@ -12,6 +12,5 @@ namespace RocketElevatorApi.Models {
     public class Quote {
         [Key]
         public long id { get; set; }
-       
     }
 }
