@@ -19,7 +19,7 @@ namespace RocketElevatorApi.Controllers
             _context = context;
         } 
 
-            [HttpGet]
+            [HttpGet("cities")]
         public IEnumerable<Addresses> GetAddresses()
         {
             return _context.Addresses;
